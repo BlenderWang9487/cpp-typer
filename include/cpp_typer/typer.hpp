@@ -41,7 +41,7 @@ template<typename T>
 class Typer {
 public:
     static T parse_cli(int argc, char** argv) {
-        auto app = CLI::App{"a"};
+        auto app = CLI::App{};
         auto args = T{};
 
         const auto view = rfl::to_view(args);
