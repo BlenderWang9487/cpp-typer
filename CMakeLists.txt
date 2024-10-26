@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(Cpp_Typer LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 20)
 
+option(CPP_TYPER_BUILD_EXAMPLES "Enable building cpp_typer example binaries" ON)
 
 add_library(cpp_typer INTERFACE)
 
@@ -18,6 +19,8 @@ target_link_libraries(cpp_typer INTERFACE reflectcpp)
 target_include_directories(cpp_typer INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
 # example binary
+if (CPP_TYPER_BUILD_EXAMPLES)
+
 add_executable(example example.cpp)
 
 target_link_libraries(example PRIVATE cpp_typer)
@@ -26,3 +29,5 @@ set_target_properties(example
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_HOME_DIRECTORY}/bin"
 )
+
+endif()
